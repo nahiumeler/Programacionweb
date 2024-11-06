@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+const MiPromesa = new Promise((resolve, reject)=> {
+    console.log("Estas haciendo algo");
+    setTimeout(function(){
+        resolve(MiPromesa2()); // resolve necesariamente debe recibir una funcion 
+    }, 2000);
+});
+
+const MiPromesa2 = () => {
+    return new Promise((resolve, reject)=> {
+        console.log("Estoy haciendo algo mas");
+        setTimeout(function(){
+            resolve("Se ha terminado todo");
+        }, 2000);
+    })
+}
+
+MiPromesa.then(resultado => {
+    return resultado;
+}).then(message => {
+    console.log(message);
+}).catch(message => {
+    console.log(message);
+})
+// desde una promesa llamo a otra promesa
+// donde dice resolve es donde se ejecuta el codigo si se cumple la promesa. Se ejecuta el constructor de la promesa 2
+//  parece que se tiene q ejecutar de forma simultanea 
+// el then frena la cascada de ejecucion 
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    new Promise(function(resolve,reject){
+        setTimeout(() => {
+            resolve(1)
+        }, 1000);
+    })
+    .then(result => {
+        console.log(result); //1
+        return result*2;
+    }
+    )
+    .then(result => {
+        console.log(result); //2
+        return result*2;
+    })
+    .then(result => {
+        console.log(result); //4
+        return result*2;
+    });
+</script>
+<body>
+    
+</body>
+</html>

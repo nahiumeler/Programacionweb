@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const MiPromesa = new Promise((resolve, reject)=> {
+        console.log("Estas haciendo algo");
+        setTimeout(function(){
+            resolve("Se ha terminado");
+        },5000);
+    });
+
+MiPromesa.then(resultado =>{
+    console.log(resultado);
+}).catch(message => {
+    console.log(message);
+})
+// promise es una funcion anonima que recibe dos parametros, resolve y reject
+// el codigo no tiene definido la parte de reject pero va a funcionar de igual manera. Solo que solo va a ejecutar la promesa y va a mostrar un mensaje x 
+// tampoco le puse ningun condicional que diga que fallo algo 
+</script>
+<body>
+    
+</body>
+</html>
