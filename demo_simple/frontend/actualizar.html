@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Actualizar datos del superheroe</title>
+	<header> 
+		<nav class="barra-desplegable">
+			<div class="logo">
+				<img src="./img/DC_Comics_logo.png" alt="Logo de DC comics">
+			</div>
+			<ul>
+				<li><a href="index.html" target="_blank"> Superheroes</a></li>
+				<li><a href="agregar.html" target="_blank"> Agregar superheroe</a></li>
+				<li><a href="actualizar.html" target="_blank"> Actualizar info</a></li>
+				<li><a href="eliminar.html" target="_blank"> Eliminar superheroe</a></li>
+			</ul>
+		</nav>
+		</header>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body>
+    <center><h1> DC - Superheroes</h1></center>
+    <div class="formulario"> 
+        <center><h2> Actualiza la información de un superhéroe</h2>
+        <form id="update-form" onsubmit="event.preventDefault(); actualizarSuperheroeFormulario();">
+            <label for="nombre">Nombre del superhéroe</label>
+            <input type="text" id="hero-name" name="Nombre">
+            <br><br>
+            <label for="habilidades">Nuevas habilidades</label>
+            <textarea id="habilidades" name="habilidades"></textarea>
+            <br><br>
+            <button type="submit">Actualizar</button>
+        </form></center>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const apiUrl = 'http://localhost:5000';
+
+        function actualizarSuperheroeFormulario() {
+            const name = document.getElementById('hero-name').value;
+            const skill = document.getElementById('habilidades').value;
+
+            axios.put(`${apiUrl}/actualizar/${name}`, { skill })
+                .then(response => {
+                    console.log("Superhéroe actualizado:", response.data);
+                    listarSuperheroes();  // Actualizar la lista en la página
+                    // Limpiar el formulario después de la actualización
+                    document.getElementById('update-form').reset();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function listarSuperheroes() {
+            // Aquí estaría la función listarSuperheroes para refrescar la lista si es necesario
+            console.log("Refrescando lista de superhéroes...");
+        }
+    </script>
+</body>
+</html>

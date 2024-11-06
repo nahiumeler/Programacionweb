@@ -1,0 +1,109 @@
+body {
+	font-family: sans-serif;
+	background-color: yellowgreen;
+}
+
+
+#main-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 5px solid red;
+}
+
+
+/* 
+#main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+} */
+
+#main-container {
+	display: flex;
+	justify-content: left;
+	flex-direction: row; 
+	flex-wrap: wrap;
+	width: 80%;
+	margin: auto;
+	justify-content: center;
+
+}
+
+#my-element {
+	padding: 30px
+}
+
+h3 {
+	color: #00008B;
+	text-decoration: underline;
+}
+
+p {
+	font-style: italic;
+	font-size: 14px;
+}
+
+.barra-desplegable {
+    list-style: none;
+    padding: 0;
+    background-color: darkolivegreen;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.barra-desplegable ul {
+    display: flex; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.barra-desplegable li {
+    display: inline-block;
+    text-align: center;
+}
+
+.barra-desplegable li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 20px;
+    display: block;
+}
+
+.barra-desplegable li a:hover {
+    background: rgb(130, 161, 67);
+}
+
+form {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: red;
+    border-style: solid;
+    text-align: center;
+}
+
+form button{
+    background-color: red;
+    color: #ffffff;
+    border-radius: 3px;
+    font-family: "Belleza", sans-serif;
+    height: 35px;
+    width: 80px;
+}

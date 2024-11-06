@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Superhéroe</title>
+</head>
+<body>
+    <center>
+        <h2>Eliminar Superhéroe</h2>
+        <form id="eliminarForm">
+            <label for="name">Nombre del Superhéroe:</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <button type="button" onclick="eliminarSuperheroe()">Eliminar</button>
+        </form>
+        <p id="resultado"></p>
+    </center>
+
+    <script>
+        async function eliminarSuperheroe() {
+            const nombre = document.getElementById('name').value;
+            const resultado = document.getElementById('resultado');
+
+            try {
+                const response = await fetch('/eliminar_superheroe', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: nombre })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultado.textContent = data.message;
+                } else {
+                    resultado.textContent = data.error;
+                }
+            } catch (error) {
+                resultado.textContent = 'Error al eliminar el superhéroe.';
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
