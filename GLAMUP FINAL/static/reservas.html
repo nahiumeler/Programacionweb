@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAMUP - Agenda tu Reserva</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="reservasApp">
+            <h1>¡Agenda tu Reserva!</h1>
+            <form id="formularioReserva" method="get" action="pago.html">
+                <input type="hidden" name="profId" id="profId">
+                <label for="fecha">Fecha:</label>
+                <input name="fecha" type="date" v-model="reserva.fecha" id="fecha" class="form-control" required>
+                <p id="fechaError" style="color: red; margin-top: 0px;"></p>
+
+                <label for="comentarios">Comentarios:</label>
+                <textarea name="comentarios" v-model="reserva.comentarios" id="comentarios" placeholder="Escribe tus comentarios..." class="form-control" ></textarea>
+
+                <p id="comentariosError" style="color: red; margin-top: 0px;"></p>
+                <button type="submit" :disabled="fechaOcupada || horarioOcupado" href="pago.html">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        function getprofesionalidURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('pid'); 
+        }
+
+        async function fetchProfesional_citas(profesionalid,fecha_formateada) {
+            const url = `http://localhost:4000/reservas_fecha/${profesionalid}/${fecha_formateada}`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('No se encontraron profesionales');
+                }
+                const data = await response.json();
+               
+                return data;
+            } catch (error) {
+                console.error(error);
+                return null;
+            }
+        }
+           
+        const profesionalid = getprofesionalidURL();
+        const formularioReserva=document.getElementById("formularioReserva");
+        const profId=document.getElementById("profId");
+        profId.value=`${profesionalid}`;
+        const fecha=document.getElementById("fecha");
+       
+
+        formularioReserva.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (!comentarios.value.trim()) {
+                const comentariosError = document.getElementById("comentariosError");
+                comentariosError.innerHTML = "Los comentarios son obligatorios."; 
+                return;
+            } else {
+                comentariosError.innerHTML = ""; 
+            }
+
+            let fecha_formateada = fecha.value;
+            const [anio,mes,dia]=fecha_formateada.split('-');
+            fecha_formateada = `${dia}${mes}${anio}`;
+            
+      
+            const fechaIngresada = new Date(anio, mes - 1, dia); // mes - 1 porque los meses son 0-11 en JavaScript
+            const hoy = new Date(); 
+
+            try {
+                const cita_fecha = await fetchProfesional_citas(profesionalid,fecha_formateada);
+                console.log(fecha_formateada);    
+                if(cita_fecha==true){
+                    console.log("fecha no disponible");
+                    const fechaError = document.getElementById("fechaError");
+                    fechaError.innerHTML="Fecha no disponible";
+                }else{
+                    if (fechaIngresada <= hoy) {
+                        console.log("La fecha ingresada no es futura");
+                        const fechaError = document.getElementById("fechaError");
+                        fechaError.innerHTML = "Debe seleccionar una fecha futura";
+                    } else {
+                        console.log("Fecha disponible");
+                        formularioReserva.submit();
+                    }
+                }
+            } catch (error) {
+                console.error("Error al obtener los datos del profesional:", error);
+            }
+
+           
+        });
+    </script>
+</body>
+</html>

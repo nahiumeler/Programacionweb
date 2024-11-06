@@ -1,0 +1,287 @@
+/* esto es para todo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif !important;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+    background-color: #f3e6f5 !important; 
+    text-align: center;
+}
+
+/* estilo del contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    background-color: #fff;
+    padding: 2rem; 
+    border-radius: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* contenedor de imágenes */
+.image-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img, .photo img {
+    width: 150px; 
+    max-width: 150px;
+    height: 150px; 
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 2px solid #ddd;
+}
+
+/* títulos */
+h1, h2, h3, h4 {
+    color: #883da8;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+h3, h4 {
+    font-size: 1.2rem;
+}
+
+/* formularios */
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 10px 0;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+textarea {
+    resize: none; /* esto es para que el textarea no se redimensione */
+    height: 100px;
+}
+
+/* botones */
+
+
+button {
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px !important ;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button-block {
+    display: block;
+    width: 100%; /* Para que ocupe todo el ancho del contenedor */
+    margin-bottom: 10px; /* Espacio entre botones */
+    text-align: center; /* Centra el texto del botón */
+}
+
+button:hover , .btn:hover{
+    background-color: #732d91;
+}
+
+.btn-primary {
+    margin-bottom: 20px;
+}
+
+.button-block a {
+    text-decoration: none; /* Quita el subrayado */
+}
+
+.button-block button{
+    text-decoration: none; /* Asegúrate de que no tenga subrayado */
+}
+
+button.button-block{
+    text-decoration: none; /* Asegúrate de que no tenga subrayado */
+}
+
+
+button:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+/* para los enlaces */
+a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+p {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+}
+
+/* mensajes de error */
+p[style*="color: red;"] {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* fotos */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.photo {
+    text-align: center;
+}
+
+.photo img {
+    width: 150px;
+    height: auto;
+}
+
+.photo h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+/* acciones de botones */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+
+}
+
+
+.edit-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.edicion {
+    border: 1px solid #ccc;
+    padding: 30px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    border-radius: 30px;
+}
+
+/* sirve para que el diseño sea responsive */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .photo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card {
+        width: 90%; 
+    }
+
+    button, .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    input, textarea {
+        padding: 0.8rem;
+    }
+
+    button, .btn {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+
+

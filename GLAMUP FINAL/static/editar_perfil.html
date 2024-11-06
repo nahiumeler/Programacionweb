@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container" id="perfilApp">
+        <h1>Editar Perfil</h1>
+        <div class="menu">
+            <a href="ver_reservas.html"><button class="button-block" @click="irAVerReservas">Citas Proximas</button></a>
+            <a href="cambiar_contrasena.html"><button class="button-block" @click="irACambiarContrasena">Cambiar Contraseña</button></a>
+            <button class="button-block" @click="mostrarCancelacion">Eliminar Cuenta</button>
+            <a href="cerrar_sesion.html"><button class="button-block" @click="irACambiarContrasena">Cerrar Sesión</button></a>
+        </div>
+        
+        <div v-if="cancelacion" class="edicion">
+            <h2>Confirmar Eliminación de Cuenta</h2>
+            <input type="password" v-model="contrasenaEliminar" placeholder="Contraseña" required>
+            <button @click="eliminarCuenta">Eliminar Cuenta</button>
+            <button @click="cancelar">Cancelar</button>
+            <p>{{ mensaje }}</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const perfilApp = Vue.createApp({
+            data() {
+                return {
+                    cancelacion: false,
+                    contrasenaEliminar: '',
+                    mensaje: '',
+                    esError: false
+                };
+            },
+            methods: {
+               
+                mostrarCancelacion() {
+                    this.cancelacion = true;
+                },
+                cancelar() {
+                    this.cancelacion = false;
+                    this.contrasenaEliminar = '';
+                    this.mensaje = '';
+                    this.esError = false
+                },
+                eliminarCuenta() {
+                    const userId = localStorage.getItem('userId'); 
+                    if (!userId) {
+                        this.mensaje = "Error: No se pudo obtener el ID del usuario";
+                        this.esError = true;
+                        return;
+                    }
+
+                    if (!this.contrasenaEliminar) {
+                        this.mensaje = "Por favor, ingresa tu contraseña para confirmar la eliminación";
+                        this.esError = true;
+                        return;
+                    }
+
+                    fetch("http://localhost:4000/configuracion/eliminar_cuenta", { 
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ user_id: userId, contrasena: this.contrasenaEliminar })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => {
+                                throw new Error(err.message || "Error al eliminar la cuenta");
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                            if (data.message) {
+                            this.mensaje = data.message;
+                            this.esError = false
+
+                            localStorage.removeItem('userId'); 
+                            setTimeout(() => {
+                            window.location.href = 'inicio_sesion.html'; 
+                        }, 2000);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        this.mensaje = "Hubo un problema: " + error.message;
+                        this.esError = true
+                    });
+                }
+            }
+        });
+        perfilApp.mount('#perfilApp');
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAMUP - Registrarse</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="registerApp" class="card">
+            <div class="image-container">
+                <img src="imagenes/fotoinicio.png" alt="Imagen de perfil">
+            </div>
+            <h1>{{ nameApp }}</h1>
+            <p v-if="mensaje" :class="{ error: esError, success: !esError }">{{ mensaje }}</p>
+            <form v-on:submit="registrarUsuario">
+                <input type="text" v-model="usuarioNuevo.nombreUsuario" placeholder="Nombre de Usuario" class="form-control" required>
+                <input type="email" v-model="usuarioNuevo.email" placeholder="Email" class="form-control" required>
+                <input type="password" v-model="usuarioNuevo.contrasenia" placeholder="Contraseña" class="form-control" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="inicio_sesion.html">Inicia sesión</a></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const registerApp = Vue.createApp({
+            data() {
+                return {
+                    nameApp: 'Registrarse',
+                    usuarioNuevo: {
+                        nombreUsuario: '',
+                        email: '',
+                        contrasenia: ''
+                    },
+                    mensaje: '',
+                    esError: false
+                }
+            },
+            methods: {
+                registrarUsuario(e) {
+                    e.preventDefault();
+                    const { nombreUsuario, email, contrasenia } = this.usuarioNuevo;
+
+                    
+                    if (!nombreUsuario || !email || !contrasenia) {
+                        this.mensaje = "Todos los campos son obligatorios";
+                        this.esError = true;
+                        return;
+                    }
+
+                  
+                    fetch("http://localhost:4000/registrarse", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            userid: nombreUsuario,
+                            email: email,
+                            contrasenia: contrasenia
+                        })
+                    })
+                    .then(response => {
+                        if (response.status === 409) {
+                            this.mensaje = "El nombre de usuario ya existe. Intente con otro.";
+                            this.esError = true;
+                        } else if (response.status === 201) {
+                            return response.json();
+                        } else {
+                            throw new Error("Error en el servidor");
+                        }
+                    })
+                    .then(data => {
+                        if (data && !this.esError) {
+                            this.mensaje = data.mensaje || "Usuario registrado exitosamente";
+                            this.esError = false;
+ 
+                            setTimeout(() => {
+                                window.location.href = 'inicio_sesion.html';
+                            }, 2000);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        this.mensaje = "Hubo un error con el registro";
+                        this.esError = true;
+                    });
+                }
+            }
+        });
+        registerApp.mount('#registerApp');
+    </script>
+</body>
+</html>

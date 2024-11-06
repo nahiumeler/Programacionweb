@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAMUP - Cambiar Contraseña</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="cambiarContrasenaApp">
+            <div class="image-container">
+                <img src="./imagenes/fotoinicio.png" alt="Foto principal">
+            </div>
+            <h1>Cambiar Contraseña</h1>
+            <form @submit.prevent="cambiarContrasena">
+                <input type="password" v-model="contrasenaActual" placeholder="Contraseña Actual" class="form-control" required>
+                <input type="password" v-model="nuevaContrasena" placeholder="Nueva Contraseña" class="form-control" required>
+                <input type="password" v-model="confirmarContrasena" placeholder="Confirmar Nueva Contraseña" class="form-control" required>
+                <button type="submit">Cambiar Contraseña</button>
+            </form>
+            <p>{{ mensaje }}</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const cambiarContrasenaApp = Vue.createApp({
+            data() {
+                return {
+                    contrasenaActual: '',
+                    nuevaContrasena: '',
+                    confirmarContrasena: '',
+                    mensaje: '',
+                    esError: false, 
+                };
+            },
+            methods: {
+                cambiarContrasena() {
+                    if (this.nuevaContrasena !== this.confirmarContrasena) {
+                        this.mensaje = "Las contraseñas no coinciden";
+                        this.esError = true
+                        return;
+                    }
+
+                    const userId = localStorage.getItem('userId'); 
+                    if (!userId) {
+                        this.mensaje = "No se pudo obtener el id del usuario";
+                        this.esError = true;
+                        return;
+                    }
+
+                    fetch(`http://localhost:4000/configuracion/cambiar_contrasena`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ user_id: userId, contrasena_actual: this.contrasenaActual, nueva_contrasena: this.nuevaContrasena })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message === "Contraseña cambiada correctamente") {
+                            this.mensaje = data.message;
+                            this.esError = false;
+
+                            setTimeout (() => {
+                                window.location.href = 'inicio_sesion.html'; 
+                            }, 2000);
+                            
+                        } else {
+                            this.mensaje = data.message; 
+                            this.esError = true;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        this.mensaje = "Hubo un problema al cambiar la contraseña";
+                        this.esError = true;
+                });
+
+                }
+
+            }
+        });
+        cambiarContrasenaApp.mount('#cambiarContrasenaApp');
+    </script>
+</body>
+</html>

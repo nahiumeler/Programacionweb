@@ -1,0 +1,544 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 0;
+    background-color: #f3e6f5 !important; 
+}
+
+.bienvenida{
+    padding: 40px;
+    background-image: url(../imagenes/fondomkp.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .bienvenida{
+        background-size: auto;
+    }
+}
+
+/* 768 */
+
+.bienvenida p, .bienvenida h1{
+    /* width: 50%; */
+    color:#432063;
+}
+
+header {
+    justify-content: center;
+    background-color:#8e44ad; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center; 
+}  
+
+.logo {
+    height: 90px;
+    border-radius: 50%;
+    margin-right: 0.5rem; 
+}
+
+.page-name {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* lista de navegación */
+.nav-list .nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+}
+
+.nav-list .nav li {
+    margin: 2rem 1rem;
+}
+
+.li-img {
+    margin: 1rem;
+}
+
+.logo-img {
+    margin-top: 5px;
+}
+
+.nav-list .nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.nav-list .nav a:hover {
+    text-decoration: underline;
+}
+
+
+.section {
+    padding: 2rem;
+    text-align: center;
+}
+
+
+/* #inicio {
+    background-color: #dcd0e9; 
+} */
+
+#quienes-somos, #servicios, #acceder {
+    background-color: #f3e6f5; 
+}
+
+#luli {
+    background-color: #732d91;
+}
+
+.contenedor {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px 0;
+	display: flex;
+	gap: 20px;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 150px;
+    text-align: center;
+}
+
+.service-card h3 {
+    color: #8e44ad; 
+}
+
+.service-card p {
+    font-size: 0.9rem;
+}
+
+
+button {
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+
+}
+
+section button {
+    border-radius: 10px; 
+
+}
+
+button:hover {
+    background-color: #732d91;
+}
+
+
+.lista_profesionales .tarjeta_profesional{
+    border: 1px solid #000;
+}
+
+.lista_profesionales .tarjeta_profesional img{
+    height: 150px;
+    width: 150px;
+}
+
+.nosotros{
+    text-align: center;
+    padding: 50px;
+}
+
+
+footer {
+    background-color:#8e44ad ; 
+    padding: 10px;
+	text-align: center; 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+.footertodo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+footer p{
+	color: #f3e6f5;
+}
+
+.card {
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 20px !important;
+    /* width: 100%;  */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    min-height: 430px; 
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.card .textos {
+    color: #732d91;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    text-align: center;
+    height: 100%; 
+
+}
+
+.card .textos a {
+    margin-top: auto; 
+}
+
+.textos a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #732d91;
+    font-weight: bold;
+}
+
+.textos a:hover {
+    color: #8d5ea2;
+    transform: scale(1.1); 
+}
+
+/*estilos para el botón Ver más del profesionales.html*/
+.boton {
+    background-color: #732d91; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: #8d5ea2;; 
+}
+
+.boton a {
+    color: white; 
+    text-decoration: none; 
+}
+
+.boton a:hover {
+    color: white; 
+}
+
+
+
+.step-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #432063;
+    position: relative;
+    /* min-height: 150px; */
+    min-height: 240px;
+    width: 100%;
+}
+
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 60px; 
+}
+
+.step-card h3 , .card-body h3 {
+    font-size: 1.2rem;
+    color: #432063;
+    font-weight: 600;
+}
+
+.card-body p {
+    font-weight: 500;
+}
+
+.textos {
+    flex-grow: 1;
+    color: #4a2e64;
+}
+
+section h2 {
+    color: #432063;
+}
+
+.gradient {
+    background: linear-gradient(45deg, #e6cbea, #c6b4f5);
+}
+
+
+.titulo-general {
+    font-size: 2rem;
+    color: #732d91; 
+}
+
+.galeria {
+    display: flex;
+    justify-content:space-around; 
+}
+
+.nueva-card {
+    margin: 20px 0; 
+    width: 200px; 
+    text-align: center; 
+    color: #432063;
+}
+
+.titulo_elegirnos{
+    margin-bottom: 20px;
+}
+
+.nueva-card h3 {
+    font-size: 1.2rem; 
+    margin-bottom: 5px; 
+}
+
+.nueva-card p {
+    font-size: 0.9rem; 
+    margin: 0; 
+}
+
+
+
+.hoy {
+    padding: 30px;
+}
+
+.titulo{
+    font-weight: 600;
+}
+
+section h2{
+    font-weight: 600;
+}
+
+
+.edit-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.luli{
+    background-color: #432063;
+    color: white;
+    text-align: center;
+}
+
+.image-container {
+    position: relative; 
+    width: 100%;
+    padding: 40px;
+    background-image: url(../imagenes/quienes-somos.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.full-width-image {
+    width: 100%; 
+    height: auto;
+    display: block;
+}
+
+.titulo-general {
+    /* color: #fff;  */
+    color: #432063; 
+    padding: 10px 20px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+
+.nosotros h3 {
+    font-size: 1.5rem;
+    color: #432063;
+    margin-bottom: 1rem;
+}
+
+.nosotros p {
+    font-size: 1rem;
+    line-height: 1.6; 
+    color: #555;
+    margin: 0 auto; 
+    max-width: 90%; 
+}
+
+
+.img-fluid {
+    max-width: 50%; 
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+}
+
+.card-nosotros {
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 20px;
+    width: auto; 
+    max-width: 100%; 
+    margin: 20px auto;
+    min-height: 100px; 
+    background-color: white;
+}
+
+.card-nosotros p { 
+    flex-grow: 1;
+    color: #4a2e64;
+}
+
+.card-nosotros:hover {
+    transform: scale(1.01); 
+    background-color: #ead6ff;
+}
+
+.step-card:hover {
+    transform: scale(1.04); 
+    background-color: #ead6ff;
+}
+
+
+/* CARROUSEL DE FOTOS*/
+.carousel-inner img {
+    height: 500px; 
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-caption h3 {
+    background-color:rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    color: #f3e6f5;
+}
+
+.carousel-caption p {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+    color: #f3e6f5;
+    margin-top: 5px;
+}
+
+/* flechas de bootstrap */
+.carousel-control-prev , .carousel-control-next {
+    width: 10% !important; /* el important es para que  pueda sobreescribir la clase de bootstrap, sino nome lo toma*/
+}
+
+.carousel-control-prev {
+    left: 1%; 
+}
+
+.carousel-control-next {
+    right: 1%; 
+}
+
+.imagen_mas {
+    width: 467px; 
+    height: 467px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    display: block;
+    margin: 0 auto; 
+}
+
+
+.container h4 , .section h4{
+    color: #432063;
+    font-weight: 500;
+}
+
+
+#nombreRubro , .color {
+    color: #432063;
+    font-weight: 600;
+}
+
+.card-title {
+    color: #432063 !important;
+}
+
+u {
+    color: #432063 !important;
+}
+
+.menu-chico{
+    display: none !important;
+    
+}
+
+@media (max-width: 768px) {
+    .menu-grande{
+        display: none;
+    }
+    .menu-chico{
+        display: flex !important;
+        background-color:#8e44ad !important; 
+
+    }
+    .menu-chico-abierto{
+        background-color: #8e44ad;
+
+    }
+    .lista-menu-chico a{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .lista-menu-chico{
+        list-style-type: none;
+    }
+}
+
+

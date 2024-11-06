@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAMUP - Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="loginApp">
+            <div class="image-container">
+                <img src="imagenes/fotoinicio.png" alt="Foto de inicio">
+            </div>
+            <h1>{{ nameApp }}</h1>
+            <p v-if="mensajeError" class="error-message">{{ mensajeError }}</p>
+            <form v-on:submit="iniciarSesion">
+                <input type="text" v-model="usuarioIngresado.userid" placeholder="Nombre de Usuario" class="form-control" required>
+                <input type="password" v-model="usuarioIngresado.contrasenia" placeholder="Contraseña" class="form-control" required>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            <p>No tienes una cuenta? <a href="registrarse.html">Regístrate</a></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const loginApp = Vue.createApp({
+            data() {
+                return {
+                    nameApp: 'Iniciar Sesión',
+                    usuarioIngresado: {
+                        userid: '',
+                        contrasenia: ''
+                    },
+                    mensajeError: ''
+                }
+            },
+            methods: {
+                iniciarSesion(e) {
+                    e.preventDefault();
+                    this.mensajeError = ''; 
+                    const { userid, contrasenia } = this.usuarioIngresado;
+
+                    fetch("http://localhost:4000/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ userid, contrasenia })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.mensaje) {
+                            localStorage.setItem('userId', userid); 
+                            window.location.href = 'inicio.html';
+                        } else {
+                            this.mensajeError = data.error || 'Error - Intente de nuevo';
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        this.mensajeError = 'Error de conexión';
+                    });
+                }
+            }
+        });
+        loginApp.mount('#loginApp');
+    </script>
+</body>
+</html>

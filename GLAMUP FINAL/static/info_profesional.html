@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Belleza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <header class="menu-grande">
+        <nav class="container">
+            <div class="row nav-list">
+                <div class="col-lg-6 col-md-4">
+                    <span class="logo-img"><img src="imagenes/logo.PNG" alt="Logo" class="logo"></span>
+                </div>
+                <ul class="col-lg-6 col-md-8 nav">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+                    <li><a href="inicio.html">Servicios</a></li>
+                    <li><a href="editar_perfil.html">Perfil</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="#8e44ad">
+        <div class="p-4 menu-chico-abierto">
+          <span class="text-body-secondary">
+            <ul class="lista-menu-chico">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+                <li><a href="inicio.html">Servicios</a></li>
+                <li><a href="editar_perfil.html">Perfil</a></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+      <nav class="menu-chico navbar">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+
+    <section id="inicio" class="section color">
+        <h1>Profesionales</h1>
+    </section>
+
+    <div class="container">
+        <section id="profesionalDiv" class="lista_profesionales">
+    
+        </section>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+        function getprofesionalidURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id'); 
+        }
+
+
+        
+        function fetchProfesional(profesionalid) {
+            const url = `http://localhost:4000/info_profesional/${profesionalid}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se encontraron profesionales');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    mostrarProfesional(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                    
+                });
+        }
+
+      
+     
+        function mostrarProfesional(profesional) {
+            console.log(profesional)
+            const profesionalDiv = document.getElementById('profesionalDiv');
+
+            let profesionalElement = document.createElement('div');
+            
+            profesionalElement.innerHTML =`
+                <center>
+                <h1><u>${profesional.nombre} ${profesional.apellido}</u></h1>
+                <img src="${profesional.imagen}" class="imagen_mas" alt="Imagen de ${profesional.nombre}"> 
+                <br>
+                <p><strong>Localidad:</strong> ${profesional.localidad}</p>
+                <p><strong>Servicios:</strong> ${profesional.descripcion}</p>
+                <p class="card-text"><strong>Precio:</strong> $${profesional.precio}</p>
+                <a href="reservas.html?pid=${profesional.profesionalid}"><button>Reservar Cita</button></a>
+                </center>
+            `;
+            profesionalDiv.appendChild(profesionalElement);
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const profesionalid = getprofesionalidURL();
+            if (profesionalid) {
+                fetchProfesional(profesionalid);
+            } else {
+                // document.getElementById('profesionales-lista').innerText = 'No se encontró el id en la URL.';
+            }
+        });
+    </script>
+</body>
+</html>

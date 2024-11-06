@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver reservas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div class="container" id="perfilApp">
+        <h1>Ver reservas</h1>
+        <div class="d-flex justify-content-start"><a href="inicio.html"><button class="btn btn-primary">Volver al sitio</button></a></div>
+        <div class="menu">
+            <div id="citasProximas">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        function fetchReservas(userId) {
+            const url = `http://localhost:4000/VerReservas?user_id=${userId}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se encontraron citas');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    mostrarcitas(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function mostrarcitas(data) {
+            const citasProximas = document.getElementById('citasProximas');
+            citasProximas.innerHTML = '';
+
+            const citas = data;
+            citas.forEach(cita => {
+                fechaFormateada = cita.fecha
+                let dia = fechaFormateada.substring(0, 2);
+                let mes = fechaFormateada.substring(2, 4);
+                let anio = fechaFormateada.substring(4, 8);
+    
+                fechaFormateada = `${dia}/${mes}/${anio}`;
+                console.log(cita);
+                let citasProximasElement = document.createElement('div');
+                
+                citasProximasElement.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Rubro: ${cita.rubro}</p>
+                        <p class="card-title">Profesional: ${cita.profesionalId}</p>
+                        <p class="card-title">Fecha: ${fechaFormateada}</p>
+                        <p class="card-title">Comentarios: ${cita.comentarios}</p>
+                    </div>
+                </div>
+                `;
+                citasProximas.appendChild(citasProximasElement);
+            });
+                    }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userId = localStorage.getItem('userId'); 
+            if (userId) {
+                fetchReservas(userId);
+            } else {
+                document.getElementById('').innerText = 'No se encontró el UserId.';
+            }
+        });
+    </script>
+</body>
+</html>
