@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+imprimirvalor()
+
+    function imprimirvalor(){
+    var mivariable = prompt("Ingrese un valor: ");
+    
+    var unstring ="Hola, el valor de la variable es: ";
+
+    if(mivariable>0){
+    document.write(unstring + mivariable + ", y es mayor que cero")
+    document.write("<br> Es un numero positivo");
+    }else if (mivariable ==0){
+    imprimirConH1(unstring + mivariable + ", es igual que cero");
+    }else if (mivariable <0){
+    imprimirConH1(unstring + mivariable + ", menor que cero");
+    }}
+
+function imprimirConH1(cadena){
+var tagApertura ="<h1>"
+var tagCierre = "</h1>"
+var htmlFormateado = tagApertura + cadena + tagCierre;
+
+document.write(htmlFormateado);
+
+}
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>
+

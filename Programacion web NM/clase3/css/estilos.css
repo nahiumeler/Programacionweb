@@ -1,0 +1,25 @@
+p { 
+    color: blue; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    width: 300px;
+    border: 2px dotted black;
+    margin-bottom: 0px;
+    margin-top: 0%;
+}
+.miparrafo{
+            color: darkred;
+            margin-top: 10px;
+            margin-bottom: 10px;
+}
+
+#miparrafo{
+    color: darkorange;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.contenedorizquierdo{
+    margin-left: 48px;
+}
+
+/* Como hacer un comentario en css */ 

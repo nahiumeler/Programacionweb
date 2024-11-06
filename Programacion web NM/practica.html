@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function RealizarOperacion(numero1, numero2){
+            number1 = parseInt(numero1)
+            number2 = parseInt(numero2)
+            
+            resultadosuma = number1 + number2
+            resultadoresta = number1 - number2
+        }
+    </script>
+</head>
+<body>
+    <center> 
+    <form action="">
+        <label for="numero1"> Primer numero</label>
+        <input type="number" name="numero1" min="0">
+        <br>
+        <br>
+        <label for="numero2"> Segundo numero</label>
+        <input type="number" name="numero2" min="0">
+        <br>
+        <br>
+        <label for="operacion"> Operacion</label>
+        <select name="operacion" >
+            <option value="suma">Sumar</option>
+            <option value="resta">Restar</option>
+        </select>
+        <br>
+        <br>
+        <button name="btnEnviar" type="button" onclick="RealizarOperacion(numero1.value, numero2.value)"> Realizar Operacion </button>
+    </form>
+</center>
+</body>
+</html>
