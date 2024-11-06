@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        {{mostrarMensaje()}}
+
+        <hr>
+        <p><h2> Hola {{nombre}}! Espero que estes bien</h2></p>
+        <hr>
+
+        <input type="text" v-model="nombre">
+        <!-- es importante que se borre name y id y que se escriba v-model y que se ponga dentro el nombre de la variable que pusiste entre corchetes -->
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return {
+                    mensaje: 'Hola Mundo',
+                    nombre: 'Fulanito'
+                }
+            }, 
+            methods: {
+                mostrarMensaje: function(){
+                    return 'El profe te dice ' + this.mensaje;
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
+<!-- this referencia al objeto que se crea adentro y puedo acceder a todas las propiedades que referencie dentro del objeto -->
+<!-- el nombre que quiero cambiar se cambia automaticamente en el texto a medida que yo voy escribiendo -->

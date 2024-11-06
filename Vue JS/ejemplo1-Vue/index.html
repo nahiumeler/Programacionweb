@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{mensaje}}</h1>
+        <h2>{{saludar}}</h2>
+        
+    </div>
+<!-- VUE JS funciona dentro de un contenedor , toda la aplicacion va a estar dentro de un div y es importante que le pongamos un id-->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- se debe copiar el codigo ese en script para que funcione -->
+    
+<!-- <script>
+        let app = Vue.createApp({
+            data: function(){
+                return {
+                    mensaje: 'Hola Mundo',
+                    saludar: 'Hola amigo'
+                }
+            }
+        })
+        app.mount('#app')
+</script> -->
+<!-- vue.create app y le paso una funcion anonima. Data es una funcion predefinida y ponemos todas las variables que interpolan con el codigo html -->
+<!-- tenemos una sola variable, cuando cerramos la llave del contructor ponemos app.mount (montar) y se corre -->
+ <!-- el id debe coincidir sino no se va a mostrar el mensaje correcto-->
+    <script src = "js/app.js"></script>   
+</body>
+
+
+</html>
