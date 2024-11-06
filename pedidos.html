@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Café Filippa </title>
+<header> 
+    <nav class="barra-desplegable">
+        <div class="logo">
+            <img src="imagenes/Logo_cafe_filippa.png" alt="Logo del Café Filippa">
+        </div>
+        <ul>
+            <li><a href="Cafe-Filippa.html" target="_blank"> Carta</a></li>
+            <li><a href="pedidos.html" target="_blank"> Pedido online</a></li>
+            <li><a href="nosotros.html" target="_blank"> Nosotros</a></li>
+            <li><a href="verpedido.html" target="_blank"> Ver pedido</a></li>
+        </ul>
+    </nav>
+</header>
+<link rel="stylesheet" href="css/estilos.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-color: #f0ffff;">
+    <center><h1 class="belleza-regular">  CAFÉ FILIPPA </h1></center>
+
+<br>
+<center> 
+<h2 class="belleza-regular"><u>  Realizá tu pedido acá </u></h2>
+<h3 class="belleza-regular"> Sáltate las filas y haz tu pedido online </h3>
+<form> 
+<label for="">Nombre completo </label>
+<input type="text" name="Nombre"> 
+<br> 
+<br> 
+<label for="">Empresa </label>
+<input type="text" name="Empresa"> 
+<br>
+<br>
+<label for="">Dirección </label>
+<input type="text" name="Dirección"> 
+<br>
+<br>
+<label for="opciones">Variedad de café </label>
+    <select name="opciones" id="opciones">
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="pocillo">Pocillo</option>
+        <option value="doble">Doble</option>
+        <option value="cortado">Café con leche</option>
+        <option value="latte">Latte</option>
+        <option value="latte vainilla">Latte vainilla</option>
+        <option value="latte caramel">Latte caramel</option>
+        <option value="latte pistacho">Latte pistacho</option>
+        <option value="latte chocolate">Latte chocolate</option>
+        <option value="capuccino">Capuccino</option>
+        <option value="capuccino vainilla">Capuccino vainilla</option>
+        <option value="capuccino caramel">Capuccino caramel</option>
+        <option value="capuccino pistacho">Capuccino pistacho</option>
+        <option value="te">Té</option>
+        <option value="submarino">Submarino</option>
+        <option value="chocolatada">Chocolatada</option>
+        <option value="nada">Ninguno</option>
+    </select>
+<br>
+<br>
+<label for="cantidad">Cantidad </label>
+<input type="number" name="cantidad" min="1" max="10">
+<br>
+<br>
+<label>
+    <input type="radio" name="temperatura" value="frio" checked> Frío
+</label>
+<label>
+    <input type="radio" name="temperatura" value="caliente"> Caliente
+</label>
+<br>
+<br>
+<label for="opciones">Snacks </label>
+    <select name="opciones" id="opciones">
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="medialuna">Medialuna</option>
+        <option value="brownie">Brownie</option>
+        <option value="alfajor ddl">Alfajor de dulce de leche</option>
+        <option value="alfajor maicena">Alfajor de maicena</option>
+        <option value="scon">Scon de queso</option>
+        <option value="tostado">Tostado de jamón y queso</option>
+        <option value="coquitos">Coquitos</option>
+        <option value="cookie">Cookie chocolate</option>
+        <option value="cookie">Cookie vainilla con chips</option>
+        <option value="cookie">Cookie pistacho</option>
+        <option value="cookie">Cookie red velvet</option>
+        <option value="muffin">Muffin banana</option>
+        <option value="muffin">Muffin manzana y canela</option>
+        <option value="muffin">Muffin arándanos</option>
+        <option value="muffin">Muffin limón</option>
+        <option value="muffin">Muffin chocolate</option>
+        <option value="muffin">Muffin pistacho</option>
+        <option value="muffin">Muffin vainilla con chips</option>
+        <option value="nada">Ninguno</option>
+    </select>
+<br>
+<br>
+<label>
+    <input type="radio" name="pedido" value="en el cafe" checked> Consumir en el local
+</label>
+<label>
+    <input type="radio" name="pedido" value="para llevar"> Para llevar
+</label>
+<br>
+<br>
+<button type="button" onclick="guardarPedido()">Pedir</button>
+</form></center>
+
+<br>
+<hr> 
+
+<h2 class="belleza-regular"> Contacto </h2>
+<p> Dirección: Sta. Rosa 1287, B1712 Castelar, Provincia de Buenos Aires </p>
+<p> Teléfono: 01147951285 </p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9411047293875!2d-58.496633725333425!3d-34.60565075759843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb73f87dfd733%3A0xf5cd9186590a134a!2sFilippa!5e0!3m2!1ses-419!2sar!4v1723318364954!5m2!1ses-419!2sar" width="1250" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br>
+<br> 
+
+<img src="imagenes/Cafe_Filippa_banner.png" alt="Cafe Filippa banner" width="1250" height="600"> 
+
+<script>
+    function guardarPedido() {
+        const form = document.getElementById('pedidoForm');
+        const pedido = {
+            nombre: form.nombre.value,
+            empresa: form.empresa.value,
+            direccion: form.direccion.value,
+            cafe: form.opciones.value,
+            cantidad: form.cantidad.value,
+            temperatura: form.temperatura.value,
+            snack: form.opciones.value,
+            tipoPedido: form.pedido.value,
+        };
+
+        // Enviar el pedido a la API usando fetch
+        fetch('http://localhost:5000/api/pedidos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pedido)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "Pedido guardado con éxito") {
+                alert(data.message);
+                form.reset();
+            } else {
+                alert("Hubo un problema con el pedido");
+            }
+        })
+        .catch(error => {
+            console.error("Error al realizar el pedido:", error);
+            alert("Error al realizar el pedido");
+        });
+    }
+</script>
+</body>
+</html>
+
