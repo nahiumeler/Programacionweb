@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asinc</title>
+</head>
+    <script>
+        console.log("inicializando");
+        obtenerDatoSincronico();
+       // console.log("Dato sincrónico: ");
+
+        function obtenerDatoSincronico(){
+            setTimeout(()=> console.log("Dato: Pepe (asincrónico)"), 2000);
+            console.log("Algo más");
+        }
+    </script>
+<body>
+    
+</body>
+</html>
