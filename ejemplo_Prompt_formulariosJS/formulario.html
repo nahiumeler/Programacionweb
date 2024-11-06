@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de ejemplo</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="txtNombre" id="">
+        <button name = "btnAlertaNombre" type="button" onclick="mostrarNombre(txtNombre.value)">Mostrar Nombre</button>
+    </form>
+    
+</body>
+<script>
+    function mostrarNombre(nombre){
+        alert("El nombre ingresado es: " + nombre);
+        document.write("<h2> El nombre ingresado es: " + nombre + "</h2>");
+    }
+</script>
+</html>

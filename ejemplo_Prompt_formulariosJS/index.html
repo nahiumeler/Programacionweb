@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var a;
+        var b;
+
+        a = prompt("Ingrese el valor de la variable a: ");
+        b = prompt ("Ingrese el valor de la variable b: ");
+
+        console.log(`Valor de la variable a: ${a}`);
+        console.log(`Valor de la variable b: ${b}`);
+
+        document.write(`<h1>Valor de la variable a: ${a}</h1> <br>`);
+        document.write(`Valor de la variable b: ${b}`);
+        
+        if(a>b)
+            document.write("<br>" + escribirH1("A es mayor que B"));
+        else if(a==b)
+            document.write("<br>"+ escribirH1("A es igual a B"));
+        else
+            document.write("<br>"+ escribirH1("B es mayor que A"));
+        
+        function escribirH1(s){
+            var tagApertura = '<h1>';
+            var tagCierre = '</h1>';
+            var contenido = tagApertura + s + tagCierre;
+            return contenido;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
