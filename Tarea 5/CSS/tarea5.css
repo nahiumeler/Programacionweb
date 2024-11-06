@@ -1,0 +1,23 @@
+body{
+    background-color: whitesmoke;
+}
+
+form {
+    width: 400px;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+}
+
+form button{
+    background-color: red;
+    color: #ffffff;
+    border-radius: 3px;
+    font-family: "Belleza", sans-serif;
+    height: 35px;
+    width: 50px;
+}
+

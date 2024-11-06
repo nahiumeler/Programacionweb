@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5 ejercicio 1</title>
+    <script>
+        function NivelNafta(){
+            var nivelactual = prompt("Ingrese su valor de combustible: ");
+            nivelactual = parseFloat(nivelactual);
+
+            if (isNaN(nivelactual)){
+                alert("El valor ingresado debe un numero ser mayor a cero")
+            }
+
+            if (nivelactual >= 0 && nivelactual <= 10) {
+                console.log("El nivel del tanque es E")
+                document.write("El nivel del tanque es E")
+            }else if(nivelactual>10 && nivelactual<=20) {
+                console.log("El nivel del tanque es 1/4")
+                document.write("El nivel del tanque es 1/4")
+            }else if(nivelactual>20 && nivelactual<=35) {
+                console.log("El nivel del tanque es 1/2")
+                document.write("El nivel del tanque es 1/2")
+            }else if(nivelactual>35 && nivelactual<=45) {
+                console.log("El nivel del tanque es 3/4")
+                document.write("El nivel del tanque es 3/4")
+            }else if(nivelactual>45 && nivelactual<=55) {
+                console.log("El nivel del tanque es F")
+                document.write("El nivel del tanque es F")
+            }
+        }
+
+NivelNafta()
+
+    </script>
+</head>
+<body>
+</body>
+</html>
