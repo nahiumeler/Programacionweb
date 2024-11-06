@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Catálogo web Mart Importaciones</title>
+
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+	
+	<!-- <link rel="stylesheet" href="css/bootstrap.lux.min.css"> -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.lux.min.css')}}">
+	<script src="https://kit.fontawesome.com/25d927a83b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a href="#" class="navbar-brand">Catalogo App</a>
+		<!-- <button id="carrito" type="button" class="btn btn-success my-2 my-sm-0" data-toggle="popover" title="Productos en el carrito" data-content="">
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+			Carrito
+		</button> -->
+		<button id="carrito" type="button" class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#modalVentanaCarrito">
+			<h4><i class="fas fa-cart-plus"></i>
+			<span class="badge badge-pill badge-dark" id="bdgCantProductos">0</span></h4>
+		</button>
+		<ul class="navbar-nav ml">
+			<li class="nav-item active"></li>
+				<p id="total" class="navbar-brand">Total: $</p>
+			</li>
+		</ul>
+		
+		<ul class="navbar-nav ml-auto">
+			
+			<form class="form-inline my-2 my-lg-0">
+				
+				<input type="search" id="search" class="form-control mr-sm-2" placeholder="Buscar  Artículo">
+				<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+				
+			</form>
+		</ul>
+	</nav>
+
+	<div class="modal" id="modalVentanaCarrito">
+		<div class="modal-dialog modal-lg" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Productos del pedido</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-sm">
+					<thead>
+						<tr>
+							<td>Código</td>
+							<td>Descripción</td>
+							<td>Precio Mayorista</td>
+							<td>Cantidad</td>
+							<td>Subtotal Mayorista</td>
+						</tr>
+					</thead>
+					<tbody id="tbPedidosEnCurso"></tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+			  <h3 id="totalModal"></h3>
+			  <button type="button" class="btn btn-primary">Guardar Cambios</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+	
+	<!-- la clase css p-4 le agrega un padding al contenedor, para mejorar el centrado en este caso. En este caso se le agrega el padding a todos los lados -->
+	<div class="container p-4">
+		<!-- table-sm es para una tabla small -->
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body my-4" id="task-result">
+						<ul id="container">
+
+						</ul>
+					</div>
+				</div>
+				<table class="table table-bordered table-sm">
+					<thead>
+						<tr>
+							<td>Código</td>
+							<td>Foto</td>
+							<td>Productos</td>
+							<td>Precio Mayorista</td>
+							<td>Cantidad</td>
+							<td>Subtotal Mayorista</td>
+							<td>Categorías</td>
+						</tr>
+					</thead>
+					<tbody id="productos"></tbody>
+				</table>
+			</div>	
+			
+		</div>
+	</div>
+
+
+
+
+	<!--<//script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
+	<script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/appMart.js')}}"></script>
+	<!-- <script src="../js/jquery-3.4.1.min.js"></script> -->
+	<!-- <script src="../js/popper.min.js"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- <script src="../js/appMart.js"></script> -->
+
+</body>
+</html>
