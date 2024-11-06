@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .tareaRealizada{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <!--vuejs component-->
+    <div class="container">
+        <div id="taskApp" class="col-sm-8 col-sm-offset-2">
+            <h1>{{nameApp}}</h1>
+            
+            <form v-on:submit="agregarTarea">
+                <input type="text" v-model="tareas.titulo" class="form-control">
+                <input type="submit" value="Agregar Tarea" class="btn btn-block btn-success">
+            </form>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hecho!</th>
+                        <th>Tarea</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="tarea in tareas">
+                        <td>
+                            <input type="checkbox" v-model="tarea.hecho">
+                        </td>
+                        <td :class="{tareaRealizada: tarea.hecho}">
+                            {{tarea.titulo}}
+                        </td>
+                        <td>
+                            <button v-on:click="eliminarTarea(tarea)" class="btn btn-danger">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let taskApp = Vue.createApp({
+            data: function(){
+                return {
+                    nameApp: 'Task App',
+                    tareas: [
+                        {
+                            titulo: 'tarea 1',
+                            hecho: true
+                        },
+                        {
+                            titulo: 'tarea 2',
+                            hecho: false
+                        },
+                        {
+                            titulo: 'tarea 3',
+                            hecho: false
+                        }
+                    ]
+                }
+            },
+            methods: { //creamos un objetos con funciones (métodos)
+                eliminarTarea: function(tarea){
+                    this.tareas.splice(this.tareas.indexOf(tarea), 1);
+                },
+                agregarTarea: function(e){
+                    e.preventDefault();
+                    this.tareas.push({
+                        titulo: this.tareas.titulo,
+                        hecho: false
+                    });
+                    this.tareas.titulo = '';
+                }
+            }
+        })
+        taskApp.mount('#taskApp') //para montar la aplicación y poder manipular el dom
+    </script>
+</body>
+</html>
