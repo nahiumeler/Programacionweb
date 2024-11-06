@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var resultado = 2; 
+    const MiPromesa = new Promise((resolve, reject) => { //resolve es que el resultado que esperas se va a resolver satisfactoriamente
+        console.log("Estas haciendo algo");
+        if(resultado == 1){
+            resolver("Se hizo");
+        } else {
+            reject("algo fallo");
+        }
+    });
+
+    MiPromesa.then(resultado => {
+        console.log(resultado);
+    }).catch(message => {
+        console.log(message);
+    })
+</script>
+<body>
+    
+</body>
+</html>

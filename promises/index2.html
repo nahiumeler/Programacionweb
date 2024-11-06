@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const mostrar = function(){
+        console.log("Funcion mostrar");
+    }
+
+    const mostrar2 = () => {
+        console.log("Funcion mostrar 2");
+    }
+
+    let mostrar3 = () => console.log("Funcion flecha mostrar 3");
+    //let finalizar =() => console.log("fin de la funcion"); 
+    // finalizar = () => console.log("Le asigne otra funcion");
+
+    llamadora(mostrar);
+    llamadora(mostrar2);
+    llamadora(mostrar);
+    // llamadora(finalizar);
+
+    function llamadora(f){
+        console.log("Hola a todos: ...");
+        f();
+    }
+
+    finalizar(() => console.log("Fin de las llamadas en un callback"));
+    function finalizar(f){
+        f();
+    }
+    
+</script>
+<body>
+    
+</body>
+</html>

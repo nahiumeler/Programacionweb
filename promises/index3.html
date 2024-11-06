@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    console.log("Inicio del programa", 
+        new Date().getSeconds());
+
+    buscarNombre((err, nombre) => {
+        if (err){
+            console.log("Error!", err, 
+                new Date().getSeconds())
+        } else {
+            console.log("Hola ${nombre}!", 
+                new Date().getSeconds());
+        }
+    });
+
+    console.log("Final del programa", 
+        new Date().getSeconds());
+
+    function buscarNombre(f){
+        setTimeout( ()=> {
+            let nombre = "Mariana";
+            f(null, nombre);
+        }, 5000);
+    };
+</script>
+<body>
+    
+</body>
+</html>
