@@ -41,7 +41,10 @@ def actualizar(name):
 @app.route('/eliminar_superheroe', methods=['DELETE'])
 def eliminar_superheroe():
     data = request.get_json()
-    nombre = data.get('name')
+    if not data or 'name' not in data:
+        return jsonify({'error': 'Solicitud incorrecta'}), 400
+
+    nombre = data['name']
 
     for i, superheroe in enumerate(superheroes):
         if superheroe['name'].lower() == nombre.lower():
@@ -53,3 +56,4 @@ def eliminar_superheroe():
 if __name__ == '__main__':
         app.run(port= 5000, debug=True)
 # Ejecuta la aplicación Flask en el puerto 5000 en modo de depuración (debug=True).
+

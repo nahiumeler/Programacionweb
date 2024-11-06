@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Eliminar Superhéroe</title>
+	<header> 
+		<nav class="barra-desplegable">
+			<div class="logo">
+				<img src="./img/DC_Comics_logo.png" alt="Logo de DC comics">
+			</div>
+			<ul>
+				<li><a href="index.html" target="_blank"> Superheroes</a></li>
+				<li><a href="agregar.html" target="_blank"> Agregar superheroe</a></li>
+				<li><a href="actualizar.html" target="_blank"> Actualizar info</a></li>
+				<li><a href="eliminar.html" target="_blank"> Eliminar superheroe</a></li>
+			</ul>
+		</nav>
+		</header>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
 </head>
 <body>
     <center>
@@ -22,7 +39,7 @@
             const resultado = document.getElementById('resultado');
 
             try {
-                const response = await fetch('/eliminar_superheroe', {
+                const response = await fetch('http://localhost:5000/eliminar_superheroe', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
