@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #0080C6;
+    padding: 10px;
+    max-width: 100%;
+}
+
+header img {
+    max-width: 200px;
+}
+
+#detalles-partido {
+    margin: 20px 0;
+}
+
+#jugadores img {
+    width: 100px;
+    margin: 10px;
+}
+
+#jugadores p {
+    font-style: italic;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fila div {
+    text-align: center;
+    margin: 0 10px;
+}
+
+
+footer {
+	display: flex;
+    background-color: #0080C6;
+    padding: 10px;
+	justify-content: center;
+	
+}
+
+footer img {
+    width: 30px;
+    margin: 0 5px;
+}
+
+.info_messi img{
+	max-width: 200px;
+	margin: 20px;
+}
