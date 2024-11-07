@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*  * (Selector universal): Aplica estas reglas a todos los elementos de la página.
+box-sizing: border-box;: Cambia la forma en que se calculan las dimensiones de los elementos. Con esta propiedad, los márgenes y bordes se incluyen dentro del tamaño total del elemento, en lugar de sumarse fuera del tamaño definido.
+margin: 0;: Elimina cualquier margen predeterminado de todos los elementos. Por ejemplo, algunos navegadores agregan márgenes por defecto a los body o h1.
+padding: 0;: Elimina cualquier relleno o espacio interno predeterminado de los elementos. */ 
+
+body {
+    background-color: lightblue;
+    font-family: 'Roboto', sans-serif;
+}
+/*  background-color: lightblue;: Establece el color de fondo del body (el área visible de la página) a un azul claro.
+font-family: 'Roboto', sans-serif;: Define la fuente del texto. Primero intenta usar la fuente Roboto, y si no está disponible, usa una fuente sans-serif genérica.  */ 
+
+header {
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+/*  background-color: lightblue;: Establece el color de fondo del encabezado (header) a un azul claro.
+text-align: center;: Centra el texto dentro del header.
+padding: 10px;: Añade 10 píxeles de espacio dentro del header, alrededor de su contenido (tanto arriba como abajo, como a los lados).
+margin-bottom: 20px;: Añade un margen de 20 píxeles en la parte inferior del header, separándolo de los elementos que estén debajo. */ 
+
+header img {
+    width: 70px;
+}
+/*  width: 70px;: Establece un ancho fijo de 70 píxeles para las imágenes dentro del header.  */ 
+
+.partido {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgb(204, 188, 99);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+/*   text-align: center;: Centra el texto dentro de los elementos con la clase .partido.
+margin-bottom: 20px;: Añade un margen de 20 píxeles en la parte inferior de los elementos con la clase .partido.
+background-color: rgb(204, 188, 99);: Establece un color de fondo en tonos dorados o amarillos.
+padding: 20px;: Añade 20 píxeles de relleno (espacio interno) en todos los lados dentro de los elementos .partido.
+border-radius: 10px;: Redondea las esquinas del contenedor con un radio de 10 píxeles.
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);: Aplica una sombra suave de 4 píxeles de desplazamiento vertical y 8 píxeles de difuminado, con una opacidad de 0.1 (sombra tenue).  */ 
+
+#jugadores img {
+    width: 100px;
+    margin: 10px;
+}
+/*  width: 100px;: Establece un ancho fijo de 100 píxeles para las imágenes dentro del contenedor con el ID #jugadores.
+margin: 10px;: Añade un margen de 10 píxeles alrededor de las imágenes (en todos los lados).   */ 
+
+#jugadores p {
+    font-style: italic;
+    font-weight: bold;
+    color: #0066cc;
+}
+/*  font-style: italic;: Aplica un estilo cursivo al texto de los párrafos dentro de #jugadores.
+font-weight: bold;: Hace que el texto sea negrita.
+color: #0066cc;: Establece el color del texto a un tono de azul específico (#0066cc).  */
+
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+/*  display: flex;: Cambia el modelo de diseño de este contenedor a flex, lo que permite organizar los elementos hijos de forma flexible y alinearlos con facilidad.
+justify-content: center;: Alinea los elementos hijos en el eje horizontal (izquierda-derecha) al centro.
+align-items: center;: Alinea los elementos hijos en el eje vertical (arriba-abajo) al centro.
+margin-bottom: 20px;: Añade un margen de 20 píxeles en la parte inferior de este contenedor.  */ 
+
+.fila div {
+    text-align: center;
+    margin: 0 10px;
+}
+/*  text-align: center;: Centra el texto dentro de los div hijos de .fila.
+margin: 0 10px;: Añade un margen horizontal de 10 píxeles a cada div (espacio a la izquierda y derecha), pero sin margen vertical. */ 
+
+footer {
+	display: flex;
+    background-color: #0080C6;
+    padding: 10px;
+	justify-content: center;
+	
+}
+/*  display: flex;: Aplica el modelo de diseño flex al footer, permitiendo distribuir los elementos hijos de manera flexible.
+background-color: #0080C6;: Establece un color de fondo azul para el footer.
+padding: 10px;: Añade 10 píxeles de relleno en todos los lados del footer.
+justify-content: center;: Centra los elementos dentro del footer en el eje horizontal.  */ 
+
+footer img {
+    width: 30px;
+    margin: 0 5px;
+}
+/*  width: 30px;: Establece un ancho fijo de 30 píxeles para las imágenes dentro del footer.
+margin: 0 5px;: Añade un margen horizontal de 5 píxeles a la izquierda y derecha de cada imagen.  */ 
