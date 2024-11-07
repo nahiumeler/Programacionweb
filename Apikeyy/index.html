@@ -5,14 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Películas en Cartelera</title>
     <style>
-        .movie {
-            text-align: center;
-            margin: 15px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
-        img {
-            width: 200px;
-            height: auto;
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        #movies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .movie {
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .movie:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin: 10px;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -21,43 +70,35 @@
     <div id="movies-container"></div>
 
     <script> 
-        const API_KEY = 'TU_API_KEY_AQUÍ';  // Coloca aquí tu API Key de TMDb , crear la api key 
-/*   
-Ve a The Movie Database (TMDb).
-Crea una cuenta o inicia sesión.
-En tu perfil, ve a "Configuración" y luego a "API".
-Solicita una nueva API Key, proporcionando los detalles que te piden (nombre de proyecto, uso, etc.).
-Una vez aprobada, encontrarás tu clave en esa misma sección.
-*/
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+        const API_KEY = '76acb548352ece0205ed951b5da838de';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
-async function fetchMovies() {
-    try {
-        const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=es-ES&page=1`);
-        const data = await response.json();
-        displayMovies(data.results);
-    } catch (error) {
-        console.error("Error al obtener películas:", error);
-    }
-}
+        async function fetchMovies() {
+            try {
+                const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=es-ES&page=1`);
+                const data = await response.json();
+                displayMovies(data.results);
+            } catch (error) {
+                console.error("Error al obtener películas:", error);
+            }
+        }
 
-function displayMovies(movies) {
-    const container = document.getElementById('movies-container');
-    movies.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('movie');
-        movieElement.innerHTML = `
-            <img src="${IMAGE_URL + movie.poster_path}" alt="${movie.title}">
-            <h3>${movie.title}</h3>
-        `;
-        container.appendChild(movieElement);
-    });
-}
+        function displayMovies(movies) {
+            const container = document.getElementById('movies-container');
+            movies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.classList.add('movie');
+                movieElement.innerHTML = `
+                    <img src="${IMAGE_URL + movie.poster_path}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                `;
+                container.appendChild(movieElement);
+            });
+        }
 
-// Llama a la función para cargar las películas
-fetchMovies();
-
+        // Llama a la función para cargar las películas
+        fetchMovies();
     </script>
 </body>
 </html>

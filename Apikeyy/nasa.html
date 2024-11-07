@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Astronomía</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: url('https://api.nasa.gov/planetary/apod?count=1&api_key=FC9Hhb4DhAIiVsavottw6CTdhb1YCP15yuNA779e');
+            background-size: cover;
+            height: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        #content h2 {
+            margin: 20px 0;
+        }
+
+        #content p {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog de Astronomía</h1>
+    </header>
+    <div id="content">
+        <h2>Últimas Noticias de Astronomía</h2>
+        <p>Este blog está dedicado a compartir noticias y descubrimientos fascinantes en el campo de la astronomía, proporcionados por la NASA.</p>
+        <!-- Aquí puedes agregar más contenido obtenido de las APIs públicas de NASA -->
+    </div>
+    <footer>
+        &copy; 2024 Blog de Astronomía
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const API_KEY = 'FC9Hhb4DhAIiVsavottw6CTdhb1YCP15yuNA779e'; // Debes obtener tu propio API key de NASA para un uso más extensivo
+        const APOD_URL = 'https://api.nasa.gov/planetary/apod';
+
+        async function fetchAPODImage() {
+            try {
+                const response = await axios.get(`${APOD_URL}?api_key=${API_KEY}`);
+                return response.data.url;
+            } catch (error) {
+                console.error('Error al obtener la imagen del APOD:', error);
+            }
+        }
+
+        async function init() {
+            const aPodImage = await fetchAPODImage();
+            document.querySelector('header').style.backgroundImage = `url(${aPodImage})`;
+        }
+
+        init();
+    </script>
+</body>
+</html>
