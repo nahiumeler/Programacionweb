@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightblue;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+header img {
+    width: 70px;
+}
+
+.partido {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgb(204, 188, 99);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.jugador {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.jugador img {
+    width: 250px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.equipo p {
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 5px;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer {
+    background-color: lightblue;
+    padding: 10px;
+    text-align: center;
+}
+
+footer a {
+    margin: 0 10px;
+}
+
+footer img {
+    width: 30px;
+}
